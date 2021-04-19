@@ -2,11 +2,22 @@ package com.blog.springJpa.vo;
 
 import java.time.LocalDateTime;
 
-public class Board {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-	 private int no;
+import org.hibernate.annotations.CreationTimestamp;
+
+@Entity
+@Table(name = "board")
+public class Board {
+		@Id @GeneratedValue
+	 	private int no;
 	    private String title;
 	    private String writer;
+	    
+	    @CreationTimestamp
 	    private LocalDateTime updateTime;
 
 	    Board(){}
@@ -17,7 +28,8 @@ public class Board {
 	        this.writer = writer;
 	        this.updateTime = LocalDateTime.now();
 	    }
-
+	    
+	    
 		public int getNo() {
 			return no;
 		}
@@ -49,4 +61,9 @@ public class Board {
 		public void setUpdateTime(LocalDateTime updateTime) {
 			this.updateTime = updateTime;
 		}
+		
+		public void localSetUpdateTime() {
+			this.updateTime = LocalDateTime.now();
+		}
+		
 }
