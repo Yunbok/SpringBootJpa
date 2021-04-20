@@ -20,7 +20,7 @@ public class Board {
 	    @CreationTimestamp
 	    private LocalDateTime updateTime;
 
-	    Board(){}
+		public Board(){}
 
 	    public Board(int no, String title, String writer) {
 	        this.no = no;
@@ -28,9 +28,9 @@ public class Board {
 	        this.writer = writer;
 	        this.updateTime = LocalDateTime.now();
 	    }
-	    
-	    
-		public int getNo() {
+
+
+	public int getNo() {
 			return no;
 		}
 
