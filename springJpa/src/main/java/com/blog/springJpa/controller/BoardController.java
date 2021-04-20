@@ -51,21 +51,19 @@ public class BoardController {
 		if(board.getUpdateTime() == null) {
 			board.localSetUpdateTime();
 		}
-		Board newBoard = boardRepositroy.save(board);
-		
-		return newBoard;
+		return boardRepositroy.save(board);
 	}
 	
 	@PostMapping("/board/title")
 	public List<Board> getTitle(@RequestBody Board board){
 		
-		return boardRepositroy.findByTitle(board.getTitle().toString());
+		return boardRepositroy.findByTitle(board.getTitle());
 	}
 	
 	
 	@PostMapping("/board/likeTitle")
 	public List<Board> getLikeTitle(@RequestBody Board board){
 		
-		return boardRepositroy.findByTitleLike("%" + board.getTitle().toString() + "%");
+		return boardRepositroy.findByTitleLike("%" + board.getTitle() + "%");
 	}
 }

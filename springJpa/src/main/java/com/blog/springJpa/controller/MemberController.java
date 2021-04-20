@@ -69,9 +69,8 @@ public class MemberController {
 	public Member createMember(@RequestBody Member member){
 		System.out.println("input 실행");
 		System.out.println(member.getName());
-		Member newMember = memberRepositroy.save(member);
-		
-		return newMember;
+
+		return memberRepositroy.save(member);
 	}
 	
 	@DeleteMapping("/member/{id}")
