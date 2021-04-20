@@ -3,6 +3,7 @@ package com.blog.springJpa.controller;
 import java.util.List;
 import java.util.Optional;
 
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,20 +21,22 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/api/")
+@Api(tags="Member")
 public class MemberController {
+
 
 	@Autowired
 	MemberRepository memberRepositroy;
 
 	@GetMapping("/member")
-	@ApiOperation(value = "사용자 목록 전체 조회", tags = "list")
+	@ApiOperation(value = "사용자 목록 전체 조회")
 	public List<Member> getAllMember(){
 		System.out.println("get 실행");
 		return memberRepositroy.findAll();
 	}
 	
 	@GetMapping("/member/{id}")
-	@ApiOperation(value = "사용자 단일 조회", tags = "view")
+	@ApiOperation(value = "사용자 단일 조회")
 	public Member getMember(@PathVariable String id){
 		Long  memberId = Long.parseLong(id);
 		System.out.println(memberId);
@@ -48,7 +51,7 @@ public class MemberController {
 	}
 	
 	@PostMapping("/member/{id}")
-	@ApiOperation(value = "사용자 수정", tags = "view")
+	@ApiOperation(value = "사용자 수정")
 	public Member updateMember(@PathVariable String id , @RequestBody Member newMember){
 		Long  memberId = Long.parseLong(id);
 		System.out.println("post실행");
@@ -62,7 +65,7 @@ public class MemberController {
 		return member.get();
 	}
 	@PutMapping("/member")
-	@ApiOperation(value = "사용자 생성", tags = "input")
+	@ApiOperation(value = "사용자 생성")
 	public Member createMember(@RequestBody Member member){
 		System.out.println("input 실행");
 		System.out.println(member.getName());
@@ -72,7 +75,7 @@ public class MemberController {
 	}
 	
 	@DeleteMapping("/member/{id}")
-	@ApiOperation(value = "사용자 삭제", tags = "delete")
+	@ApiOperation(value = "사용자 삭제")
 	public String deleteMember(@PathVariable String id){
 		Long memberID = Long.parseLong(id);
 		System.out.println("delete실행");

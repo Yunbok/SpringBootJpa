@@ -2,6 +2,7 @@ package com.blog.springJpa.controller;
 
 import java.util.List;
 
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/api/")
+@Api(tags="Board")
 public class BoardController {
 
 	@Autowired
@@ -42,7 +44,7 @@ public class BoardController {
 	
 	
 	@PutMapping("/board")
-	@ApiOperation(value = "글 작성", tags = "input")
+	@ApiOperation(value = "글 작성")
 	public Board createMember(@RequestBody Board board){
 		System.out.println("input 실행");
 		System.out.println(board.getTitle());
